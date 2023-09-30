@@ -1,0 +1,29 @@
+табличка
+
+---------------------------------------------
+
+rusbuk = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+for f in range(11):
+    print('<' * 27)
+    for letter in rus_lower:
+        if rusbuk.index(letter) % 11 == position:
+            print('| ', letter.upper(), letter, ' |', end='')
+    print()
+print('<' * 27)
+
+---------------------------------------------
+
+убирает большые буквы
+
+---------------------------------------------
+
+letters = input()
+'clean_string = '
+for letter in letters:
+    if not letter.isupper():
+        clean_string += letter
+letters = clean_string
+print(letters)
+
+---------------------------------------------
+

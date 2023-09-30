@@ -1,0 +1,272 @@
+bot = telebot.TeleBot('6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY')
+
+
+@bot.message_handler(commands=['/start'])
+def start(message):
+    bot.send_message(message.chat.id, 'Ghbtn')
+
+
+bot.polling(none_stop=True)
+
+
+
+
+
+
+
+
+готовый код
+
+-----------------------------------------
+
+import telebot
+
+token = '6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY'
+
+bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(content_types=['text'])
+def talk(message):
+    if message.text == 'Привет':
+        bot.send_message(message.chat.id, 'Здравствуйте, я тестовый бот агенства Artex, с какой целью вы обратились к нам ?')
+    elif message.text == 'Создание сайта':
+        bot.send_message(message.chat.id, 'Отлично, вот сылка на наш сайт https://andreykirillov.art/')
+
+
+bot.polling(none_stop=True)
+
+-----------------------------------------
+
+def on click (message):
+if message.text == 'Chat':
+bot.send_message(message.chat.id, 'Website is open')
+elif message.text == 'Yдant OTO:
+
+-----------------------------------------
+
+import telebot
+from telebot import types
+token = '6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY'
+
+bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(commands=['start'])
+def website(message):
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton('Посетить сайт', 'https://andreykirillov.art/'))
+    bot.send_message(message.chat.id, 'перейдите на сайт', reply_markup=markup)
+
+
+bot.polling(none_stop=True)
+
+------------------------------------------
+
+
+@bot.message_handler(commands=['start'])
+def website(message):
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton('Создание сайтов', 'https://andreykirillov.art/uslugi/'))
+    markup.add(types.InlineKeyboardButton('Реклама в интернет', 'https://andreykirillov.art/uslugi/'))
+    markup.add(types.InlineKeyboardButton('Продвижение', 'https://andreykirillov.art/uslugi/'))
+    markup.add(types.InlineKeyboardButton('Хочу посетить сайт', 'https://andreykirillov.art/'))
+    bot.send_message(message.chat.id, 'Здравствуйте , с какой целью вы обратились к нам ?', reply_markup=markup)
+
+
+
+
+
+
+bot.register_next_step_handler(message, on_click)
+
+
+def on_click(message):
+    if message.text == 'Связь':
+        bot.send_message(message.chat.id, 'Вы можете написать нам через WK или позвонить       для того что бы выбрать нужный вариант напишите команды "/WK" или "/Phone"')
+
+
+
+
+
+
+        import telebot
+from telebot import types
+
+token = '6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY'
+
+bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.InlineKeyboardMarkup()
+    btn1 = types.InlineKeyboardButton('Посетить сайт', 'https://andreykirillov.art/')
+    markup.row(btn1)
+    btn2 = types.InlineKeyboardButton('Услуги', 'https://andreykirillov.art/uslugi/')
+    btn3 = types.InlineKeyboardButton('Связь', 'https://andreykirillov.art/uslugi/')
+    markup.row(btn2, btn3)
+    bot.send_message(message.chat.id, 'Здравствуйте , это компания Artex для дальнейшего использования нажмите соответствующую кнопку', reply_markup=markup)
+
+
+bot.polling(none_stop=True)
+--------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------
+
+import telebot
+from telebot import types
+
+token = "6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY"
+bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    smiley_unicode = '\U0001F604'
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    btn1 = types.InlineKeyboardButton(f'Посетить сайт {smiley_unicode}', 'https://andreykirillov.art/')
+    btn2 = types.InlineKeyboardButton('Услуги', callback_data='yes_2')
+    btn3 = types.InlineKeyboardButton('Связь', callback_data='yes')
+    markup.row(btn1, btn2, btn3)
+    bot.send_message(message.chat.id, 'Здравствуйте , это компания Artex для дальнейшего использования нажмите соответствующую кнопку', reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback(call):
+    if call.data == "yes_2":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Создание сайтов', 'https://andreykirillov.art/sozdanie-sajtov/')
+        btn2 = types.InlineKeyboardButton('Реклама', 'https://andreykirillov.art/1-2/')
+        btn3 = types.InlineKeyboardButton('Продвижение', 'https://andreykirillov.art/prodvizhenie/')
+        markup.row(btn1, btn2, btn3)
+        bot.send_message(call.message.chat.id,
+                         'Выберите подходяий для вас способ',
+                         reply_markup=markup)
+
+    if call.data == "yes":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('ВК', 'https://vk.com/kirillova_ru')
+        btn2 = types.InlineKeyboardButton('Телефон', 'tel: +79033584455')
+        markup.row(btn1)
+        bot.send_message(call.message.chat.id,
+                        'Выберите способ связи',
+                        reply_markup=markup)
+
+bot.polling(none_stop=True, interval=0)
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import telebot
+from telebot import types
+
+token = "6657590037:AAH4nYyRYskgnUUR8phgtobMMAQ38lPCxCY"
+bot = telebot.TeleBot(token)
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.InlineKeyboardMarkup()
+    btn1 = types.InlineKeyboardButton('Рассчитать проект 🧾', callback_data='yes_1')
+    markup.row(btn1)
+    bot.send_message(message.chat.id, 'Здравствуйте  🖐\nЯ чат-бот компании ARTEX\nПомогу вам расщитать стоимость создания сайта 📝\nДля этого выберите нужную вам кнопку ⬇️', reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback(call):
+    if call.data == "yes_1":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Создание сайтов 🗒', callback_data='yes_2')
+        btn2 = types.InlineKeyboardButton('Реклама 📢', callback_data='yes_3')
+        btn3 = types.InlineKeyboardButton('Продвижение 📈', callback_data='yes_4')
+        btn4 = types.InlineKeyboardButton('Получить консультацию 💬', callback_data='yes_5')
+        markup.row(btn1)
+        markup.row(btn2)
+        markup.row(btn3)
+        markup.row(btn4)
+        bot.send_message(call.message.chat.id,
+                         'Какую задачу нужно решить 📝?',
+                         reply_markup=markup)
+
+    if call.data == "yes_2":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Лендинг 📃', callback_data='yes_6')
+        btn2 = types.InlineKeyboardButton('Бизнес сайт 💼', callback_data='yes_7')
+        btn3 = types.InlineKeyboardButton('Интернет магазин 🛒', callback_data='yes_8')
+        markup.row(btn1, btn2)
+        markup.row(btn3)
+        bot.send_message(call.message.chat.id,
+                         'Выберите подходяий для вас способ ⬇️',
+                         reply_markup=markup)
+
+    if call.data == "yes_6":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Продажа товара 🤝', callback_data='yes_9')
+        btn2 = types.InlineKeyboardButton('Сбор лидов 📊', '')
+        btn3 = types.InlineKeyboardButton('Приглашение на событие 🎟', '')
+        btn4 = types.InlineKeyboardButton('Другое... 📦', '')
+        markup.row(btn1)
+        markup.row(btn2)
+        markup.row(btn3)
+        markup.row(btn4)
+        bot.send_message(call.message.chat.id,
+                         'Выберите специфику 📁',
+                         reply_markup=markup)
+
+    if call.data == "yes_9":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Да', '')
+        btn2 = types.InlineKeyboardButton('Нет', callback_data='yes_11')
+        markup.row(btn1)
+        markup.row(btn2)
+        bot.send_message(call.message.chat.id,
+                         'У вас есть дизайн, макет, изображения, тексты 🗂 ?',
+                         reply_markup=markup)
+
+    if call.data == "yes_11":
+        markup = types.InlineKeyboardMarkup()
+        btn1 = types.InlineKeyboardButton('Заказать дизайн 🎨', '')
+        btn2 = types.InlineKeyboardButton('Заказать коперайтинг 💻', '')
+        btn3 = types.InlineKeyboardButton('Получить консультацию 👨🏻‍💻', '')
+        markup.row(btn1)
+        markup.row(btn2, btn3)
+        bot.send_message(call.message.chat.id,
+                         'У вас есть дизайн, макет, изображения, тексты 🗂 ?',
+                         reply_markup=markup)
+
+
+bot.polling(none_stop=True, interval=0)

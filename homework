@@ -1,0 +1,41 @@
+
+------------------------------------------------------
+
+n = int(input())
+
+def repeat_please_n_times ():
+    for i in range(n):
+        print('Jast do it')
+repeat_please_n_times ()
+
+------------------------------------------------------
+
+a = (1, 1, 3, 4, 2, 4, 1, 4, 6, 7)
+b = []
+def find_duplicate(a):
+    for i in a:
+        if i not in b and a.count(i) > 1:
+            b.append(i)
+    return b
+
+find_duplicate(a)
+print(b)
+
+------------------------------------------------------
+
+def gcd(a, b):
+    while b > 0:
+        a, b = b, a%b
+    return a
+
+numb = int(input())
+inp = []
+for i in range(numb):
+  inp.append(int(input()))
+a = inp[0]
+for j in range(1,len(inp)):
+  z = gcd(a, inp[j])
+
+  a = z
+
+print(a)
